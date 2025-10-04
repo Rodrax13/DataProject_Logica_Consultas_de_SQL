@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram version="1" name="Esquema_Cine">
+	<entities>
+		<data-source id="postgres-jdbc-198f9c8d7ad-1032a96174930fe1">
+			<entity id="1" name="actor" fq-name="public.actor">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="2" name="address" fq-name="public.address">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="3" name="category" fq-name="public.category">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="4" name="city" fq-name="public.city">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="5" name="country" fq-name="public.country">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="6" name="customer" fq-name="public.customer">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="7" name="film" fq-name="public.film">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="8" name="film_actor" fq-name="public.film_actor">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="9" name="film_category" fq-name="public.film_category">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="10" name="inventory" fq-name="public.inventory">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="11" name="language" fq-name="public.&quot;language&quot;">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="12" name="payment" fq-name="public.payment">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="13" name="rental" fq-name="public.rental">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="14" name="staff" fq-name="public.staff">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+			<entity id="15" name="store" fq-name="public.store">
+				<path name="public"/>
+				<path name="Cine"/>
+			</entity>
+		</data-source>
+	</entities>
+	<relations>
+		<relation name="film_actor_actor_id_fkey" fq-name="public.film_actor.film_actor_actor_id_fkey" type="fk" pk-ref="1" fk-ref="8"/>
+		<relation name="customer_address_id_fkey" fq-name="public.customer.customer_address_id_fkey" type="fk" pk-ref="2" fk-ref="6"/>
+		<relation name="staff_address_id_fkey" fq-name="public.staff.staff_address_id_fkey" type="fk" pk-ref="2" fk-ref="14"/>
+		<relation name="store_address_id_fkey" fq-name="public.store.store_address_id_fkey" type="fk" pk-ref="2" fk-ref="15"/>
+		<relation name="film_category_category_id_fkey" fq-name="public.film_category.film_category_category_id_fkey" type="fk" pk-ref="3" fk-ref="9"/>
+		<relation name="address_city_id_fkey" fq-name="public.address.address_city_id_fkey" type="fk" pk-ref="4" fk-ref="2"/>
+		<relation name="city_country_id_fkey" fq-name="public.city.city_country_id_fkey" type="fk" pk-ref="5" fk-ref="4"/>
+		<relation name="payment_customer_id_fkey" fq-name="public.payment.payment_customer_id_fkey" type="fk" pk-ref="6" fk-ref="12"/>
+		<relation name="rental_customer_id_fkey" fq-name="public.rental.rental_customer_id_fkey" type="fk" pk-ref="6" fk-ref="13"/>
+		<relation name="film_actor_film_id_fkey" fq-name="public.film_actor.film_actor_film_id_fkey" type="fk" pk-ref="7" fk-ref="8"/>
+		<relation name="film_category_film_id_fkey" fq-name="public.film_category.film_category_film_id_fkey" type="fk" pk-ref="7" fk-ref="9"/>
+		<relation name="inventory_film_id_fkey" fq-name="public.inventory.inventory_film_id_fkey" type="fk" pk-ref="7" fk-ref="10"/>
+		<relation name="rental_inventory_id_fkey" fq-name="public.rental.rental_inventory_id_fkey" type="fk" pk-ref="10" fk-ref="13"/>
+		<relation name="film_language_id_fkey" fq-name="public.film.film_language_id_fkey" type="fk" pk-ref="11" fk-ref="7"/>
+		<relation name="film_original_language_id_fkey" fq-name="public.film.film_original_language_id_fkey" type="fk" pk-ref="11" fk-ref="7"/>
+		<relation name="payment_rental_id_fkey" fq-name="public.payment.payment_rental_id_fkey" type="fk" pk-ref="13" fk-ref="12"/>
+		<relation name="payment_staff_id_fkey" fq-name="public.payment.payment_staff_id_fkey" type="fk" pk-ref="14" fk-ref="12"/>
+		<relation name="rental_staff_id_fkey" fq-name="public.rental.rental_staff_id_fkey" type="fk" pk-ref="14" fk-ref="13"/>
+		<relation name="store_manager_staff_id_fkey" fq-name="public.store.store_manager_staff_id_fkey" type="fk" pk-ref="14" fk-ref="15"/>
+		<relation name="customer_store_id_fkey" fq-name="public.customer.customer_store_id_fkey" type="fk" pk-ref="15" fk-ref="6"/>
+		<relation name="inventory_store_id_fkey" fq-name="public.inventory.inventory_store_id_fkey" type="fk" pk-ref="15" fk-ref="10"/>
+		<relation name="staff_store_id_fkey" fq-name="public.staff.staff_store_id_fkey" type="fk" pk-ref="15" fk-ref="14"/>
+	</relations>
+</diagram>
