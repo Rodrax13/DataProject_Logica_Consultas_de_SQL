@@ -106,6 +106,20 @@ where p.rental_id in (
 );	
 
 
+/****************** Query Alternativa ******************/
+
+select
+	p.rental_id as antepenultimo_fecha,
+	p.amount as coste
+from rental r 
+inner join payment p 
+	on r.rental_id = p.rental_id 
+order by r.rental_date desc
+offset 2
+limit 1 ;
+
+
+
 /* 12. Encuentra el título de las películas en la tabla “film” que no sean ni ‘NC17’ ni ‘G’ en cuanto a su clasificación. */
 
 select 
@@ -700,6 +714,30 @@ inner join category c
 	on fc.category_id = c.category_id 
 where c."name" <> 'Music'	
 group by a.first_name , a.last_name ;
+
+
+/****************** Query Corregida ******************/
+
+
+select 
+	a.first_name as nombre,
+	a.last_name as apellido
+from actor a 
+where a.actor_id not in (
+	select 
+	a.actor_id as id
+	from actor a 
+		inner join film_actor fa 
+			on a.actor_id = fa.actor_id 
+		inner join film f 
+			on fa.film_id = f.film_id 
+		inner join film_category fc 
+			on f.film_id = fc.film_id 
+		inner join category c 
+			on fc.category_id = c.category_id
+		where c."name"  = 'Music'	
+);
+
 
 
 /* 57. Encuentra el título de todas las películas que fueron alquiladas por más
